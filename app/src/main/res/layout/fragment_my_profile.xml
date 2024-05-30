@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MyProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:padding="20dp">
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:src="@drawable/figure1"
+                android:id="@+id/myprofile_figure"
+              />
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/emptystar"
+                android:id="@+id/emptystar1"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/emptystar"
+                android:id="@+id/emptystar2"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/emptystar"
+                android:id="@+id/emptystar3"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/emptystar"
+                android:id="@+id/emptystar4"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/emptystar"
+                android:id="@+id/emptystar5"/>
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:id="@+id/myprofile_level"
+                android:layout_marginTop="30dp"
+                android:padding="8dp"
+                android:hint="level -"
+                android:textSize="30dp"
+                app:fontFamily="sans-serif-black"
+                android:drawablePadding="8dp"/>
+
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:id="@+id/myprofile_coins"
+                android:layout_marginTop="0dp"
+                android:padding="8dp"
+                android:hint="coins - "
+                android:textSize="30dp"
+                app:fontFamily="sans-serif-black"
+                android:drawablePadding="8dp" />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:id="@+id/myprofile_botton"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:text="Let's Play :)"
+                app:cornerRadius="30dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+

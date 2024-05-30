@@ -1,0 +1,322 @@
+@startuml
+class com.example.myapplication.Shape {
+# float x
+# float y
++ float getX()
++ void setX(float)
++ float getY()
++ void setY(float)
+}
+
+
+class com.example.myapplication.surfaceView {
+~ boolean threadRunning
+~ boolean isRunning
+~ Context context
+~ SurfaceHolder holder
+~ Bitmap bitmap
+~ Bitmap bitmap2
+~ Bitmap figure1
+~ Bitmap figure2
+~ Bitmap figure3
+~ Bitmap figure4
+~ Bitmap figure5
+~ Bitmap powerArrows
+~ Bitmap powerBoomb
+~ Bitmap powerRocket
+~ Bitmap powerSnowball
+~ Bitmap powerFireball
+~ Bitmap powerBoomerang
+~ Bitmap powerRanDanker
+~ Bitmap powerRock
+~ Bitmap powerSnowflake
+~ Bitmap powerWoodenlog
+~ Bitmap left
+~ Bitmap right
+~ TextView textView
+~ float sum
+~ boolean gotIntoTheRadius
+~ Paint hilaPaint
+~ Paint radiusColor
+~ Paint paint
+~ float ratio
+~ float x
+~ int done
+~ int powerIndexChoice
+~ float yWithFifteen
+~ float xWithFifteen
+~ float xMinusFifteen
+~ float figureIsMovingX
+~ float figureIsMovingY
+~ float startingPositionXComputer
+~ float movingXDelta
+~ float movingYDelta
+- float[] powerX
+~ boolean init
+- PowerBar powerBar
+- ArrayList<MovingPower> movingPowers
+- float endPositionX
+- float endPositionY
+- float startingPositionYOfPower
+- float startingPositionXOfPower
+- Player player
+- ComputerPlayer computerPlayer
+~ float deltax
+~ float deltaxComputer
+- int counterTimer
+- int timerValue
+- int clickCounter
+- void temporaryConfiguration()
++ void run()
+- void drawTimer(Canvas)
+- void thePowerIsMovingOnTheCanvas(Canvas)
+- void drawImages(Canvas)
+- void drawComputerImages(Canvas)
+- void initGameConsts(Canvas)
+- void initUIElements()
+- void drawBitmaps()
+- void setPowerX(Canvas)
+- void drawPowerBar(Canvas)
+- void drawPowers(Canvas)
++ boolean onTouchEvent(MotionEvent)
+- boolean handleRightLeftClick(float,float,int)
+}
+
+
+class com.example.myapplication.MovingPower {
+- Bitmap bitmap
+- float ratio
+- int damage
+- boolean isActive
++ int getDamage()
++ int advance(Canvas)
++ boolean checkCollision(float,float,float)
+}
+
+
+class com.example.myapplication.ComputerPlayer {
++ void movePlayer()
++ void setPlayerDirection(float)
++ void draw(Canvas)
+}
+
+class com.example.myapplication.UserDetailsDBHelper {
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
+- {static} String TABLE_NAME
+- {static} String COLUMN_EMAIL
+- {static} String COLUMN_PASSWORD
+- {static} String COLUMN_POWER1
+- {static} String COLUMN_POWER2
+- {static} String COLUMN_POWER3
+- {static} String COLUMN_POWER4
+- {static} String COLUMN_COINS
+- {static} String COLUMN_LEVEL
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ void addUser(UserDetails)
++ UserDetails getUser(String)
++ int updateUser(UserDetails)
+}
+
+
+class com.example.myapplication.FinancialMeansFragment {
+- View view
+~ ImageView iv0
+~ ImageView iv1
+~ ImageView iv2
+~ ImageView iv3
+~ ImageView selectednewPowerView
+~ int selectedReloading
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setPowers(String[])
++ String getUserEmail()
+- void setPowerListeners()
++ void openPowers()
+}
+
+
+class com.example.myapplication.UserDetails {
+- String email
+- String password
+- String[] powers
+- int coins
+- int level
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String[] getPowers()
++ void setPowers(String[])
++ int getCoins()
++ void setCoins(int)
++ int getLevel()
++ void setLevel(int)
+}
+
+
+class com.example.myapplication.MovingShape {
+- float x
+- float y
+}
+
+class com.example.myapplication.MainActivity {
+~ surfaceView ds
+~ Thread thread
+~ boolean userAskBack
+# void onCreate(Bundle)
++ void finish()
++ void moveToProfileFragment()
+}
+
+
+class com.example.myapplication.ProfileActivity {
+- TabLayout tabLayout
+- ViewPager2 viewPager2
+- ViewPagerAdapterProfile adapter
+# void onCreate(Bundle)
+}
+
+
+class com.example.myapplication.StartActivity {
+- ViewPager2 viewPager
+# void onCreate(Bundle)
++ void moveToProfileActivity()
+}
+
+
+class com.example.myapplication.AppConstant {
++ {static} float IMAGE_TOP
++ {static} float POWERS_Y
++ {static} float MIDDLE_X
++ {static} int IMAGE_WIDTH
++ {static} int IMAGE_HEIGHT
++ {static} float startingPositionX
++ {static} float startingPositionXComputer
++ {static} float startingPositionY
++ {static} int SPEEDX
++ {static} int TIME_TO_SLEEP
++ {static} int MAX_NUM_OF_BARS
++ {static} int NUM_OF_POWERS
++ {static} float canvasWidth
++ {static} float canvasHeight
++ {static} float POWERX_DELTA_X
++ {static} Powers[] AllPowers
++ {static} Powers[] currPowers
+}
+
+class com.example.myapplication.LoginTabFragment {
+- View view
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+
+
+class com.example.myapplication.MyProfileFragment {
+- View view
+- boolean fiveStars
+- ImageView[] starViews
++ boolean isFiveStars()
+- void liseOfStarViews()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void fillStar()
++ void removeStar()
++ void changeLevel()
++ void afterAGame(ImageView[])
+}
+
+
+class com.example.myapplication.ViewPagerAdapterProfile {
++ Fragment createFragment(int)
++ int getItemCount()
+}
+
+class com.example.myapplication.SignupTabFragment {
+- View view
+- UserDetailsDBHelper dbHelper
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void saveUserEmail(String)
+}
+
+
+class com.example.myapplication.ViewPagerAdapter {
++ Fragment createFragment(int)
++ int getItemCount()
+}
+
+class com.example.myapplication.PowerBar {
+- int load
+- boolean gameOnGoing
+- int image
++ void setLoad(int)
++ boolean isGameOnGoing()
++ void startLoading()
++ void usedPower(int)
++ void setGameOnGoing(boolean)
++ int getLoad()
+}
+
+
+class com.example.myapplication.Player {
+# Bitmap bitmap
+# Powers[] powers
+# float lifeSum
+# int powerValue
+# int direction
+~ Paint hilaPaint
+~ Paint paint
+# int deltaX
++ int getDirection()
++ void setDirection(int)
++ Bitmap getBitmap()
++ void setBitmap(Bitmap)
++ Powers[] getPowers()
++ void setPowers(Powers[])
++ float getLifeSum()
++ void setLifeSum(float)
++ int getPowerValue()
++ void setPowerValue(int)
++ void draw(Canvas)
++ void setPlayerDirection(float)
++ float getRadius()
+}
+
+
+class com.example.myapplication.Powers {
+# int damage
+# int reloading
+# boolean clicked
+# Bitmap bitmap
++ int getDamage()
++ void setDamage(int)
++ void setReloading(int)
++ boolean isClicked()
++ void setClicked(boolean)
++ Bitmap getBitmap()
++ void setBitmap(Bitmap)
++ int getReloading()
+}
+
+
+
+
+com.example.myapplication.Runnable <|.. com.example.myapplication.surfaceView
+android.view.SurfaceView <|-- com.example.myapplication.surfaceView
+com.example.myapplication.Shape <|-- com.example.myapplication.MovingPower
+com.example.myapplication.Player <|-- com.example.myapplication.ComputerPlayer
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.myapplication.UserDetailsDBHelper
+androidx.fragment.app.Fragment <|-- com.example.myapplication.FinancialMeansFragment
+com.example.myapplication.Shape <|-- com.example.myapplication.MovingShape
+androidx.appcompat.app.AppCompatActivity <|-- com.example.myapplication.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.myapplication.ProfileActivity
+androidx.fragment.app.FragmentActivity <|-- com.example.myapplication.StartActivity
+androidx.fragment.app.Fragment <|-- com.example.myapplication.LoginTabFragment
+androidx.fragment.app.Fragment <|-- com.example.myapplication.MyProfileFragment
+androidx.viewpager2.adapter.FragmentStateAdapter <|-- com.example.myapplication.ViewPagerAdapterProfile
+androidx.fragment.app.Fragment <|-- com.example.myapplication.SignupTabFragment
+androidx.viewpager2.adapter.FragmentStateAdapter <|-- com.example.myapplication.ViewPagerAdapter
+com.example.myapplication.Shape <|-- com.example.myapplication.Player
+@enduml

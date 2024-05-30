@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".FinancialMeansFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity=""
+                android:id="@+id/financialmeans_level"
+                android:layout_marginTop="30dp"
+                android:padding="8dp"
+                android:text="level - 1"
+                android:textSize="25dp"
+                app:fontFamily="sans-serif-black"
+                android:drawablePadding="8dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity=""
+                android:id="@+id/financialmeans_coins"
+                android:layout_marginTop="0dp"
+                android:padding="8dp"
+                android:text="coins - 0"
+                android:textSize="25dp"
+                app:fontFamily="sans-serif-black"
+                android:drawablePadding="8dp" />
+
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:weightSum = "4"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:id="@+id/ivPower0"
+                    android:src="@drawable/arrows" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/boomb"
+                    android:id="@+id/ivPower1"
+
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/fireball"
+                    android:layout_weight="1"
+                    android:id="@+id/ivPower2"
+
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/rock"
+                    android:layout_weight="1"
+                    android:id="@+id/ivPower3"
+
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum = "3"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/randanker"
+                    android:id="@+id/ivLevel2"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/snowball"
+                    android:layout_weight="1"
+                    android:id="@+id/ivLevel3"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/woodenlog"
+                    android:layout_weight="1"
+                    android:id="@+id/ivLevel4"
+                    android:gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum = "3"
+        android:orientation="horizontal">
+
+
+    <TextView
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:text="-700-"
+        android:textSize="20dp"
+        android:background="#425495"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:id="@+id/tvLock2"
+        />
+
+                <TextView
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:text="-650-"
+                    android:textSize="20dp"
+                    android:background="#425495"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/tvLock3"
+                    />
+
+                <TextView
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:text="-800-"
+                    android:textSize="20dp"
+                    android:background="#425495"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/tvLock4"
+                    />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum = "3"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+
+        >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/snowflake"
+                    android:layout_weight="1"
+                    android:id="@+id/ivLevel5"
+
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/rocket"
+                    android:layout_weight="1"
+                    android:id="@+id/ivLevel5.5"
+
+                    android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll5"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum = "3"
+        android:orientation="horizontal">
+                <TextView
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:text="-850-"
+                    android:textSize="20dp"
+                    android:background="#425495"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/tvLock5"
+                    />
+
+                <TextView
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:text="-650-"
+                    android:textSize="20dp"
+                    android:background="#425495"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:id="@+id/tvLock6"
+                    />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
