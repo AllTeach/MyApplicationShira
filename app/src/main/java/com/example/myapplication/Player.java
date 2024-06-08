@@ -86,6 +86,16 @@ public class Player extends Shape {
         this.powers = new Powers[AppConstant.NUM_OF_POWERS];
     }
 
+
+    public int getWidth()
+    {
+        return bitmap.getWidth();
+    }
+    public int getHeight()
+    {
+        return bitmap.getHeight();
+    }
+
     public Player(Powers[] powers, float lifeSum) {
         this.powers = powers;
         this.lifeSum = lifeSum;

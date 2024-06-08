@@ -51,7 +51,7 @@ public class MyProfileFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),MainActivity.class);
+                Intent i = new Intent(getActivity(),MainActivityAI.class);
                 startActivity(i);
             }
         });
