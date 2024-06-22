@@ -25,10 +25,17 @@ public class FinancialMeansFragment extends Fragment {
 
     private View view;
 
+    private int selectedCost = 0;
+
+
+    private UserDetails userDetails=null;
+
     ImageView iv0;
     ImageView iv1;
     ImageView iv2;
     ImageView iv3;
+
+    TextView tvCoins, tvLevel;
 
     ImageView selectednewPowerView;
     int selectedReloading = 0, selectedDamage = 0;
@@ -44,7 +51,7 @@ public class FinancialMeansFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+/*
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,13 +67,23 @@ public class FinancialMeansFragment extends Fragment {
             }
         }).start();
 
+
+ */
+
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
         // Read powers from DB
         // set the powers to the image views
         UserDetailsDBHelper dbHelper = new UserDetailsDBHelper(getContext());
 
         String email = getUserEmail();
 
-        UserDetails userDetails = dbHelper.getUser(email);
+        userDetails = dbHelper.getUser(email);
 
 
 
@@ -75,12 +92,26 @@ public class FinancialMeansFragment extends Fragment {
         iv1 = view.findViewById(R.id.ivPower1);
         iv2 = view.findViewById(R.id.ivPower2);
         iv3 = view.findViewById(R.id.ivPower3);
+        tvCoins = view.findViewById(R.id.financialmeans_coins);
+        tvLevel = view.findViewById(R.id.financialmeans_level);
 
+
+        tvCoins.setText("Coins: " + userDetails.getCoins());
+        tvLevel.setText("Level: " + userDetails.getLevel());
         setPowers(userDetails.getPowers());
 
 
         setPowerListeners();
+        openPowers();
 
+
+    }
+
+
+    private void refreshUserInfo(UserDetails userDetails)
+    {
+        tvCoins.setText("Coins: " + userDetails.getCoins());
+        tvLevel.setText("Level: " + userDetails.getLevel());
 
     }
 
@@ -145,7 +176,9 @@ public class FinancialMeansFragment extends Fragment {
                 String email = getUserEmail();
                 UserDetails userDetails = dbHelper.getUser(email);
                 userDetails.getPowers()[0] = powerName;
+                userDetails.setCoins(userDetails.getCoins() - selectedCost);
                 dbHelper.updateUser(userDetails);
+                refreshUserInfo(userDetails);
 
             }
         });
@@ -201,11 +234,15 @@ public class FinancialMeansFragment extends Fragment {
 
     public void openPowers() // when ur razing a level
     {
-        int level = 2;// get level
-        int coins = 250; // get coins
+        if(userDetails == null)
+            return;
+        int level = userDetails.getLevel();//2;// get level
+        int coins = userDetails.getCoins();//250; // get coins
         int numOfCoinsForThePower;
-        if (level >= 2) {
-            numOfCoinsForThePower = 700;
+        if (level >= 1) {
+            numOfCoinsForThePower = 700; //????FIX!!
+            if(coins<numOfCoinsForThePower)
+                return;
             TextView tvLock2 = view.findViewById(R.id.tvLock2);
             tvLock2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
@@ -230,6 +267,8 @@ public class FinancialMeansFragment extends Fragment {
                                     selectednewPowerView = ivSelectLevel2;
                                     selectedDamage = 164;
                                     selectedReloading = 8;
+
+                                    selectedCost = 700;
                                                 }
                                             }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {

@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +22,8 @@ public class MyProfileFragment extends Fragment {
     //private ImageView imageView;
     private boolean fiveStars = false;
 
+    TextView tvProfileCoins, tvProfileLevel;
+    UserDetails userDetails = null;
     public boolean isFiveStars() {
         return fiveStars;
     }
@@ -46,7 +50,6 @@ public class MyProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         liseOfStarViews();
-
         Button b = view.findViewById(R.id.myprofile_botton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +69,25 @@ public class MyProfileFragment extends Fragment {
 
 
          */
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        userDetails = new UserDetailsDBHelper(getContext()).getUser(getUserEmail());
+        tvProfileCoins = view.findViewById(R.id.myprofile_coins);
+        tvProfileLevel = view.findViewById(R.id.myprofile_level);
+
+        tvProfileCoins.setText(String.valueOf(userDetails.getCoins()));
+        tvProfileLevel.setText(String.valueOf(userDetails.getLevel()));
+
+    }
+
+    public String getUserEmail() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("details", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("KEY_USER_EMAIL", null);
     }
 
 

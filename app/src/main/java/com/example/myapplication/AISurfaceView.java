@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.example.myapplication.AppConstant.IMAGE_TOP;
 import static com.example.myapplication.AppConstant.MIDDLE_X;
 import static com.example.myapplication.AppConstant.POWERS_Y;
@@ -13,6 +14,7 @@ import static com.example.myapplication.AppConstant.startingPositionY;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -209,7 +211,7 @@ public class AISurfaceView extends SurfaceView implements Runnable {
     }
 
     private int counterTimer = 0;
-    private int timerValue = 60;
+    private int timerValue = 20;
 
 
     // timer
@@ -254,6 +256,23 @@ public class AISurfaceView extends SurfaceView implements Runnable {
         ( (Activity)context).runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
+                // update user details coins and level
+                UserDetailsDBHelper dbHelper = new UserDetailsDBHelper(context);
+                // get user email from shared preferences
+                SharedPreferences sharedPreferences = context.getSharedPreferences("details", MODE_PRIVATE);
+                String userEmail = sharedPreferences.getString("KEY_USER_EMAIL", "");
+
+                // If the user's email exists, show the dialog
+                if (!userEmail.isEmpty()) {
+                    UserDetails userDetails = dbHelper.getUser(userEmail);
+                    userDetails.setCoins(userDetails.getCoins() + 700);
+                    userDetails.setLevel(userDetails.getLevel() + 1);
+                    dbHelper.updateUser(userDetails);
+                }
+
+
+
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                 alertDialog.setTitle("Game Over");
                 alertDialog.setMessage("The winner is: " + player);
