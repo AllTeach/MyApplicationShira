@@ -240,7 +240,7 @@ public class FinancialMeansFragment extends Fragment {
         int coins = userDetails.getCoins();//250; // get coins
         int numOfCoinsForThePower;
         if (level >= 1) {
-            numOfCoinsForThePower = 700; //????FIX!!
+            numOfCoinsForThePower = selectedCost; //????FIX!!
             if(coins<numOfCoinsForThePower)
                 return;
             TextView tvLock2 = view.findViewById(R.id.tvLock2);

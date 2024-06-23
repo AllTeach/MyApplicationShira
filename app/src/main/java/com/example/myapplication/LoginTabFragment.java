@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -51,7 +54,41 @@ private  View view;
                 // user has clicked the login button
                 String email = etMailLog.getText().toString();
                 String password = etPasswordLog.getText().toString();
+
+
+                // Check if the email and password are in the SQLITE database
+                // update shared preferences with email of this user
+                // move to the profile activity
+                UserDetailsDBHelper dbHelper = new UserDetailsDBHelper(getContext());
+
+             UserDetails user = dbHelper.getUser(email);
+                if (user != null) {
+                    // this means email and password are the same
+                    if(user.getPassword().equals(password))
+                    {
+                        // User exists
+                        // Save the user's email in shared preferences
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("details", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("KEY_USER_EMAIL", email);
+                        editor.apply();
+
+                        // Move to the profile activity
+                        ((StartActivity) getActivity()).moveToProfileActivity();
+                    }
+                    else
+                        Toast.makeText(getContext(), "Password is incorrect", Toast.LENGTH_SHORT).show();
+
+                }
+                    else
+                    {
+                        Toast.makeText(getContext(), "no such email", Toast.LENGTH_SHORT).show();
+                    }
+                    // User exists
+                    // Save the user's email in shared preferences
+
+
             }
         });
+        }
     }
-}

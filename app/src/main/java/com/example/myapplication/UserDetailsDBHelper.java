@@ -69,9 +69,12 @@ public class UserDetailsDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NAME, new String[]{COLUMN_EMAIL,
                         COLUMN_PASSWORD, COLUMN_POWER1, COLUMN_POWER2, COLUMN_POWER3, COLUMN_POWER4, COLUMN_COINS, COLUMN_LEVEL}, COLUMN_EMAIL + "=?",
                 new String[]{email}, null, null, null, null);
+
+
         if (cursor != null)
             cursor.moveToFirst();
-
+        if(cursor.getCount() == 0)
+            return null;
         UserDetails user = new UserDetails();
         user.setEmail(cursor.getString(0));
         user.setPassword(cursor.getString(1));
